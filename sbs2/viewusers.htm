@@ -1,0 +1,49 @@
+<head>
+    <title>SmileBASIC Source 2 Users</title>
+    <script src="viewusers.js" type="text/javascript" defer></script>
+</head>
+<body>
+    <style type="text/css">
+        body{
+            font-family: sans-serif;
+        }
+        #user-data-display > th, td {
+            border: 1px solid;
+            padding: 0.5em;
+            padding-right: 1em;
+            padding-left: 1em
+        }
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+        }
+        #user-data-display {
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+        #username-search-input {
+            display: none;
+        }
+        .defiltered-un {
+            display: none;
+        }
+    </style>
+    <table id='user-data-display'>
+        <thead>
+            <caption>
+                SmileBASIC Source 2 Users
+            </caption>
+            <tr>
+                <th>ID</th>
+                <th>Avatar</th>
+                <th>
+                    <span id='username-search'>Username</span>
+                    <input type='text' id='username-search-input' name='username-search-input' placeholder='Filter...'>
+                </th>
+                <th>Site Link</th>
+                <th>Creation Date</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</body>
