@@ -4,9 +4,10 @@ const avatarURL = "File/raw/";
 const userSite = 'https://new.smilebasicsource.com/user/';
 
 let usernames = new Array();
+let ids = new Array();
 
 let generateTable = function(data) {
-    let t = document.getElementById('user-data-display');
+    let t = document.getElementById('user-data-display').tBodies[0];
     for (let i of data) {
         let r = t.insertRow(-1);
         let idCell = r.insertCell(-1);
@@ -26,39 +27,63 @@ let generateTable = function(data) {
     }
 };
 
-document.getElementById('username-search').addEventListener('click', function(e) {
-    let ins = document.getElementById('username-search-input');
+let getSearchTypeName = function(id) {
+    return id.substring(0, id.indexOf('-'));
+}
+
+// this is just to reduce amount of code needed lol
+let getSearchTypeArr = function(id) {
+    let i = getSearchTypeName(id);
+    if (i == 'username')
+        return usernames;
+    else
+        return ids;
+}
+
+let searchToggle = function(e) {
+    let id = e.target.id;
+    let nm = getSearchTypeName(id);
+    let ins = document.getElementById(nm+'-search-input');
     if (ins.style.display === 'block') {
         ins.style.display = 'none';
         // reset filtering
-        let r = document.querySelectorAll('.defiltered-un');
+        let r = document.querySelectorAll('.defiltered-'+un);
         for (i of r)
-            i.classList.remove('defiltered-un');
+            i.classList.remove('defiltered-'+un);
         ins.value = '';
     }
     else {
         ins.style.display = 'block';
-        // we also want to generate a list of the usernames to search so that we can filter them
-        if (usernames.length == 0) {
-            let r = document.getElementById('user-data-display').rows;
-            usernames.push('');
+        let arr = getSearchTypeArr(id);
+        let index = ['id','','username','',''].indexOf(nm);
+        if (arr.length == 0) {
+            let r = document.getElementById('user-data-display').tBodies[0].rows;
+            arr.push('');
             for (let i = 1; i < r.length; i++)
-                usernames.push(r[i].cells.item(2).innerHTML);
-            console.log(usernames);
+                arr.push(r[i].cells.item(index).innerHTML);
         }
+        ins.focus();
     }
-});
+};
 
-document.getElementById('username-search-input').addEventListener('keyup', function(e) {
+let searchTyping = function(e) {
+    let id = e.target.id;
     let t = e.target.value.toUpperCase();
-    let r = document.getElementById('user-data-display').rows;
-    for (let i = 1; i < usernames.length; i++) {
-        if (!(usernames[i].toUpperCase().indexOf(t) > -1))
-            r[i].classList.add('defiltered-un');
+    let r = document.getElementById('user-data-display').tBodies[0].rows;
+    let nm = getSearchTypeName(id);
+    let arr = getSearchTypeArr(id);
+    for (let i = 1; i < arr.length; i++) {
+        if (!(arr[i].toUpperCase().indexOf(t) > -1))
+            r[i].classList.add('defiltered-'+nm);
         else
-            r[i].classList.remove('defiltered-un');
+            r[i].classList.remove('defiltered-'+nm);
     }
-});
+};
+
+document.getElementById('username-search').addEventListener('click', (e) => {searchToggle(e)});
+document.getElementById('username-search-input').addEventListener('keyup', (e) => {searchTyping(e)});
+document.getElementById('id-search').addEventListener('click', (e) => {searchToggle(e)});
+document.getElementById('id-search-input').addEventListener('keyup', (e) => {searchTyping(e)});
 
 document.addEventListener("DOMContentLoaded", (e) => {
     let sReq = new XMLHttpRequest();

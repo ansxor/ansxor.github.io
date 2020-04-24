@@ -21,23 +21,30 @@
             margin: 0 auto;
             border-collapse: collapse;
         }
-        #username-search-input {
+        #username-search-input,#id-search-input,.defiltered-username,.defiltered-id {
             display: none;
         }
-        .defiltered-un {
-            display: none;
+        #id-search-input {
+            width: 5em;
+        }
+        a, a:visited, a:hover, a:active {
+            color: #0000ee;
+            text-decoration: none;
         }
     </style>
     <table id='user-data-display'>
-        <thead>
+        <thead bgcolor="#393939">
             <caption>
                 SmileBASIC Source 2 Users
             </caption>
             <tr>
-                <th>ID</th>
+                <th>
+                    <a href='#' id='id-search'>ID</a>
+                    <input type='text' id='id-search-input' name='id-search-input' placeholder='ID...'>
+                </th>
                 <th>Avatar</th>
                 <th>
-                    <span id='username-search'>Username</span>
+                    <a href='#' id='username-search'>Username</a>
                     <input type='text' id='username-search-input' name='username-search-input' placeholder='Filter...'>
                 </th>
                 <th>Site Link</th>
