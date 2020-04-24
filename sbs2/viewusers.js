@@ -47,9 +47,10 @@ let searchToggle = function(e) {
     if (ins.style.display === 'block') {
         ins.style.display = 'none';
         // reset filtering
-        let r = document.querySelectorAll('.defiltered-'+un);
+        console.log('owo');
+        let r = document.querySelectorAll('.defiltered-'+nm);
         for (i of r)
-            i.classList.remove('defiltered-'+un);
+            i.classList.remove('defiltered-'+nm);
         ins.value = '';
     }
     else {
