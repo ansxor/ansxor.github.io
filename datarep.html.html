@@ -1,0 +1,1046 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-09-04 Fri 07:32 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Data Representation - Part I</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Darien Reese" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<style>pre.src {background-color: #303030; color: #e5e5e5;}</style>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/styles/bigblow/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/styles/bigblow/css/bigblow.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/styles/bigblow/css/hideshow.css"/>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/bigblow/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/bigblow/js/jquery-ui-1.10.2.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/bigblow/js/jquery.localscroll-min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/bigblow/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/bigblow/js/jquery.zclip.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/bigblow/js/bigblow.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/bigblow/js/hideshow.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Data Representation - Part I</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orge158703">1. Decimal Numbers</a></li>
+<li><a href="#org83fa0e8">2. Binary Numbers</a></li>
+<li><a href="#org0356c1d">3. Octal Numbers</a></li>
+<li><a href="#orgc01ea33">4. Hexadecimal Numbers</a></li>
+<li><a href="#orgffdcdb7">5. Converting a Number in a Different Base to Decimal</a></li>
+<li><a href="#orgec49acc">6. Converting a Decimal Number to Another Base</a></li>
+<li><a href="#org669765b">7. Converting Between Binary and Octal</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge158703" class="outline-2">
+<h2 id="orge158703"><span class="section-number-2">1</span> Decimal Numbers</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+When using numbers in every day applications, we use thedecimal numbersystem(also called thebase-10 number system).  The decimal number system is over 1,000 years old and uses ten symbols to encode numbers, namely thedigits 0, 1, 2, 3, 4, 5, 6, 7, 8, and 9.
+</p>
+
+<p>
+Decimal numbers are made up of digits which consist of the above symbols in specific positions.  Each digit has aface valuewhich is the digit itself andaplace valuewhich is a power of 10.
+</p>
+
+<p>
+Ex:  State the face value and place value of each digit in the number 276.
+</p>
+
+<p>
+276
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">face</th>
+<th scope="col" class="org-left">place</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">6</td>
+<td class="org-left">10<sup>0</sup> = 1</td>
+</tr>
+
+<tr>
+<td class="org-right">7</td>
+<td class="org-left">10<sup>1</sup> = 10</td>
+</tr>
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-left">10<sup>2</sup> = 100</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+For decimal numbers with a decimal point, the digits to the right of the decimal point have place values which are powers of 10 with negative exponents.
+</p>
+
+<p>
+Ex: State the face value and place value of each digit in the number 132.85
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">face</th>
+<th scope="col" class="org-left">place</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">5</td>
+<td class="org-left">10<sup>-2</sup> = 0.01</td>
+</tr>
+
+<tr>
+<td class="org-right">8</td>
+<td class="org-left">10<sup>-1</sup> = 0.1</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">2</td>
+<td class="org-left">10<sup>0</sup> = 1</td>
+</tr>
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-left">10<sup>1</sup> = 10</td>
+</tr>
+
+<tr>
+<td class="org-right">1</td>
+<td class="org-left">10<sup>2</sup> = 100</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+The expanded form of a decimal number is the sum of the face value of each
+digit multiplied by its place value.
+</p>
+
+<p>
+Ex: Write 821 and 24.179 in their respective expanded forms.
+</p>
+
+\begin{equation}
+	821 = 8*10^2 + 2*10^1 + 1 * 10^0
+\end{equation}
+\begin{equation}
+	821 = 8*100 + 2*10 + 1*1
+\end{equation}
+\begin{equation}
+	24.179 = 2*10^1 + 4*10^0 + 1*10^{-1} + 7*10^{-2} + 9*10^{-3}
+\end{equation}
+\begin{equation}
+	24.179 = 2*10 + 4*1 + 1*0.1 + 7*0.01 + 9*0.001
+\end{equation}
+</div>
+</div>
+
+<div id="outline-container-org83fa0e8" class="outline-2">
+<h2 id="org83fa0e8"><span class="section-number-2">2</span> Binary Numbers</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+The binary number system (also called the base-2 number system) uses only the symbols 0 and 1 to encode numbers. A single binary digit is called a bit and a group of 8 bits is called a byte.
+</p>
+
+<p>
+Bits can be used to model . . .
+</p>
+
+<ul class="org-ul">
+<li>whether a switch in an electric circuit is open or closed.</li>
+<li>whether a capacitor in a microprocessor is holding a charge or not.</li>
+<li>whether a bump appears at a certain place on a DVD or not.</li>
+<li>whether a given statement is true or false.</li>
+</ul>
+
+<p>
+Binary number systems are used by all modern computers and telecommunication devices.
+</p>
+
+<p>
+In the binary number system, the face value of a bit is either 0 or 1 and the place value of a bit is a power of 2.
+</p>
+
+<p>
+Ex: State the face value and place value of each bit in the binary number 101.011. Write this number in expanded form.
+</p>
+
+<p>
+101.011
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">face</th>
+<th scope="col" class="org-left">place</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">1</td>
+<td class="org-left">2<sup>2</sup> = 4</td>
+</tr>
+
+<tr>
+<td class="org-right">0</td>
+<td class="org-left">2<sup>1</sup> = 2</td>
+</tr>
+
+<tr>
+<td class="org-right">1</td>
+<td class="org-left">2<sup>0</sup> = 0</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-right">0</td>
+<td class="org-left">2<sup>-1</sup> = 0.5</td>
+</tr>
+
+<tr>
+<td class="org-right">1</td>
+<td class="org-left">2<sup>-2</sup> = 0.25</td>
+</tr>
+
+<tr>
+<td class="org-right">1</td>
+<td class="org-left">2<sup>-3</sup> = 0.125</td>
+</tr>
+</tbody>
+</table>
+
+\begin{equation}
+	101.011 = 1 * 2^2 + 0 * 2^1 + 1 * 2^0 + 0 * 2^{-1} + 1 * 2^{-2} + 1 * 2^{-3}
+\end{equation}
+\begin{equation}
+	101.011 = 1*4 + 1*1 + 1*0.25 + 1*0.125 = 5.375
+\end{equation}
+
+<p>
+To easily distinguish between decimal numbers and binary numbers, we add a subscript of 10 or 2, respectively, to the end of the number. Any number whose base is not given is assumed to be base-10.
+</p>
+
+<p>
+Ex: Write the expanded form of 1011 and 1011.
+</p>
+
+\begin{equation}
+	1011_{10} = 1*10^3 + 0*10^2 + 1*10^1 + 1*10^0
+\end{equation}
+\begin{equation}
+	1011_{10} = 1*1000 + 1*10 + 1
+\end{equation}
+\begin{equation}
+  1011_2 = 1*2^3 + 0*2^2 + 1*2^1 + 1*2^0
+\end{equation}
+\begin{equation}
+  1011_2 = 1*8 + 1*2 + 1*1 = 11_{10}
+\end{equation}
+
+<p>
+A binary number can be converted to a decimal number by computing the sum of the expanded form of the binary number.
+</p>
+
+<p>
+Ex: Convert each of the following binary numbers to decimal numbers
+</p>
+
+<ol class="org-ol">
+<li>1101<sub>2</sub></li>
+</ol>
+
+\begin{equation}
+  (1101)_2 = 1*2^3 + 1*2^2 + 0*2^1 + 1*2^0
+\end{equation}
+\begin{equation}
+  (1101)_2 = 1*8 + 1*4 + 1*1 = (13)_{10}
+\end{equation}
+
+<ol class="org-ol">
+<li>(10.101)<sub>2</sub></li>
+</ol>
+
+\begin{equation}
+  (10.101)_2 = 1*2^1 + 0*2^0 + 1*2^{-1} + 0*2^{-2} + 1*2^{-3}
+\end{equation}
+\begin{equation}
+  (10.101)_2 = 0*2^{-2} + 1*2^{-3}
+\end{equation}
+\begin{equation}
+  1*2 + 1*0.5 + 1*0.125 = 2.625
+\end{equation}
+</div>
+</div>
+
+<div id="outline-container-org0356c1d" class="outline-2">
+<h2 id="org0356c1d"><span class="section-number-2">3</span> Octal Numbers</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+The octal number system (also called the base-8 number system) uses the symbols 0, 1, 2, 3, 4, 5, 6, and 7 to encode a number. Here the face value of a digit is one of the above symbols and the place value of a digit is a power of 8.
+</p>
+
+<p>
+Octal number systems were used in earlier days of computing but are rarely used today. One application, however, is the use of octal numbers to set permissions with the <code>chmod</code> command used in the C-programming language or in Unix.
+</p>
+
+<p>
+Ex: State the face value and place value of each digit in the number 732<sub>8</sub>.
+</p>
+
+<p>
+(732)<sub>8</sub>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">face</th>
+<th scope="col" class="org-left">place</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">2</td>
+<td class="org-left">8<sup>0</sup> = 1</td>
+</tr>
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-left">8<sup>1</sup> = 8</td>
+</tr>
+
+<tr>
+<td class="org-right">7</td>
+<td class="org-left">8<sup>2</sup> = 64</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Ex: Write the expanded form of 15.3<sub>8</sub> and convert it to a decimal number.
+</p>
+
+\begin{equation}
+  (15.3)_8 = 1*8^1 + 5*8^0 + 3*8^{-1} = 1*8 + 5*1 + 3* 0.125
+\end{equation}
+\begin{equation}
+  8 + 5 + 0.375 = (13.375)_{10}
+\end{equation}
+</div>
+</div>
+
+<div id="outline-container-orgc01ea33" class="outline-2">
+<h2 id="orgc01ea33"><span class="section-number-2">4</span> Hexadecimal Numbers</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+The hexadecimal number system (also called the base-16 number system) uses the symbols 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, and F to encode a number. Here the face value of a digit is one of the above symbols and the place value of a digit is a power of 16. The symbols A, B, C, D, E, and F have values 10, 11, 12, 13, 14, and 15 respectively.
+</p>
+
+<p>
+Digits of hexadecimal numbers are called nibbles because each nibble describes exactly one of the numbers in a half-byte.
+</p>
+
+<p>
+Hexadecimal numbers are used . . .
+</p>
+<ul class="org-ul">
+<li>as memory addresses in RAM.</li>
+<li>to encode colours for computer graphics in HTML code.</li>
+<li>in machine language or assembly language programming.</li>
+</ul>
+
+<p>
+Ex: State the face value and place value of each nibble of D39<sub>16</sub>.
+</p>
+
+<p>
+(D39)<sub>16</sub>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">face</th>
+<th scope="col" class="org-left">place</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">9</td>
+<td class="org-left">16<sup>0</sup> = 1</td>
+</tr>
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-left">16<sup>1</sup> = 16</td>
+</tr>
+
+<tr>
+<td class="org-right">13 = D</td>
+<td class="org-left">16<sup>2</sup> = 256</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Ex: Write the numbers BEAD<sub>16</sub> and 4.A3<sub>16</sub> in expanded form.
+</p>
+
+\begin{equation}
+  (BEAD)_{16} = B*16^3 + E*16^2 + A*16^1 + D*16^0 = (11)(4096) + (14)(256) + (10)(16) + (13)(1)
+\end{equation}
+\begin{equation}
+  (BEAD)_{16} = (48813)_{10}
+\end{equation}
+\begin{equation}
+  (4.A3)_{16} = 4*16^0 + A*16^{-1} + 3*16^{-2} = (4)(1) + (10)(0.0625) + (3)(0.00390625)
+\end{equation}
+\begin{equation}
+  (4.A3)_{16} = (4.64671875)_{10}
+\end{equation}
+
+<p>
+Ex: Convert the number 83C<sub>16</sub> to decimal.
+</p>
+
+\begin{equation}
+  (83C)_{16} = 8*16^2 + 3*16^1 + C*16^0 = 8(256) + 3(16) + 12(1)
+\end{equation}
+\begin{equation}
+  (83C)_{16} = (2108)_{10}
+\end{equation}
+
+<p>
+Practice: Write each of the following numbers in expanded form and convert them to decimal.
+</p>
+
+<ol class="org-ol">
+<li>1DF<sub>16</sub></li>
+</ol>
+
+\begin{equation}
+  1DF_{16} = 1*16^2 + D*16^1 + F*16^0
+\end{equation}
+\begin{equation}
+  (256) + (13)(16) + (15)(1) = (479)_{10}
+\end{equation}
+
+
+<ol class="org-ol">
+<li>63.5<sub>8</sub></li>
+</ol>
+
+\begin{equation}
+  63.5_8 = 6*8^1 + 3*8^0 + 5*8^{-1}
+\end{equation}
+\begin{equation}
+  (6)(8) + 3(1) + 5(0.125) = (51.625)_{10}
+\end{equation}
+
+<ol class="org-ol">
+<li>101.011<sub>2</sub></li>
+</ol>
+
+\begin{equation}
+  (101.011)_2 = 1*2^2 + 1*2^0 + 1*2^{-2} + 1*2^{-3}
+\end{equation}
+\begin{equation}
+  4 + 1 + 0.25 + 0.125 = (5.375)_{10}
+\end{equation}
+</div>
+</div>
+
+<div id="outline-container-orgffdcdb7" class="outline-2">
+<h2 id="orgffdcdb7"><span class="section-number-2">5</span> Converting a Number in a Different Base to Decimal</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+You may use the method previously shown this week (multiply each face value by its place value and add up the results)
+</p>
+
+<p>
+Another method to convert an integer number in base-n to decimal:
+</p>
+
+<ol class="org-ol">
+<li>Let the current result be the leftmost digit.</li>
+<li>Stop if there are no more unprocessed digits.</li>
+<li>Multiply the current result by n.</li>
+<li>Add the next digit to the current result and go to step 2.</li>
+</ol>
+
+<p>
+Ex: Use the above method to convert 137<sub>8</sub> to decimal.
+</p>
+
+<p>
+(137)<sub>8</sub>
+</p>
+
+\begin{equation}
+  1*8 = 8+3 = 11*8 = 88+7 = (95)_{10}
+\end{equation}
+</div>
+</div>
+
+<div id="outline-container-orgec49acc" class="outline-2">
+<h2 id="orgec49acc"><span class="section-number-2">6</span> Converting a Decimal Number to Another Base</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+Method: Convert a decimal number to base-n.
+</p>
+
+<ol class="org-ol">
+<li>Find the largest power of n that is not larger than the number.</li>
+<li>By dividing, determine how many times this power of n goes into the number. The result is the next digit in the base-n representation.</li>
+<li>Repeat steps 1 and 2 with the remainder until the number is completely converted, inserting zeroes as placeholders if any powers of n are skipped.</li>
+</ol>
+
+<p>
+Ex: Convert 217 to hexadecimal.
+</p>
+
+<ol class="org-ol">
+<li>Largest power of 16 not larger than 216 is <span class="underline">16</span>.</li>
+</ol>
+
+\begin{equation}
+  217 = (13)(16) + 9
+\end{equation}
+
+\begin{equation}
+  9 = 9(1) + 0
+\end{equation}
+
+\begin{equation}
+  (217)_{10} = (D9)_{16}
+\end{equation}
+
+<p>
+Ex: Convert 61.5 to binary.
+</p>
+
+\begin{equation}
+  61.5=(1)(32) + 29.5
+\end{equation}
+\begin{equation}
+  29.5=(1)(16)+13.5
+\end{equation}
+\begin{equation}
+  13.5=(1)(8)+5.5
+\end{equation}
+\begin{equation}
+  5.5=(1)(4)+1.5
+\end{equation}
+\begin{equation}
+  1.5=(1)(1)+0.5
+\end{equation}
+\begin{equation}
+  0.5=(1)(0.5)+0
+\end{equation}
+
+<p>
+(111101.1)<sub>2</sub> = (61.5)<sub>10</sub>
+</p>
+
+<p>
+<b>Another Method</b>: To convert an <b>integer</b> decimal number to base-n, repeatedly divide the number by n keeping track of the remainders as shown in the examples below.
+</p>
+
+<p>
+Ex: Convert 340 to octal
+</p>
+
+\begin{equation}
+  340 / 8 = (42)(8) + 4
+\end{equation}
+\begin{equation}
+  42 / 8 = (5)(8) + 2
+\end{equation}
+\begin{equation}
+  5 / 8 = (0)(8) + 5
+\end{equation}
+\begin{equation}
+  (340)_{10} = 524_8
+\end{equation}
+
+<p>
+Ex: Convert 79 to binary.
+</p>
+
+\begin{equation}
+  79 = (39)(2)+1
+\end{equation}
+\begin{equation}
+  39 = (19)(2) + 1
+\end{equation}
+\begin{equation}
+  19 = (9)(2) + 1
+\end{equation}
+\begin{equation}
+  9 = (4)(2) = 1
+\end{equation}
+\begin{equation}
+  4 = (2)(2) + 0
+\end{equation}
+\begin{equation}
+  2 = (1)(2) + 0
+\end{equation}
+\begin{equation}
+  1 = (0)(2) + 1
+\end{equation}
+\begin{equation}
+  (79)_{10} = (1001111)_2
+\end{equation}
+
+<p>
+<b>Converting a Decimal Fraction to Base-n</b>: Apply the previous method to the integer part of the number. Take the purely fractional part and repeatedly multiply by n, removing each resulting integer part as a digit in the base-n representation as shown in the examples below.
+</p>
+
+<p>
+Ex: Convert 0.6 to binary.
+</p>
+
+\begin{equation}
+  0.6 * 2 = (1).2
+\end{equation}
+\begin{equation}
+  0.2 * 2 = (0).4
+\end{equation}
+\begin{equation}
+  0.4 * 2 = (0).8
+\end{equation}
+\begin{equation}
+  0.8*2 = (1).6
+\end{equation}
+<p>
+Since it ends up back at 0.6, it becomes a repeating decimal number and it infinitely continues on; for example for this number being <span class="underline">1001</span> repeatedly
+</p>
+\begin{equation}
+  (0.1001)_2
+\end{equation}
+
+<p>
+Ex: Convert 29.3 to octal.
+</p>
+
+\begin{equation}
+  29 = (3)(8) + 5
+\end{equation}
+\begin{equation}
+  3 = (0)(8) + 3
+\end{equation}
+\begin{equation}
+  (29)_{10} = (35)_8
+\end{equation}
+\begin{equation}
+  0.3(9) = (2).4
+\end{equation}
+\begin{equation}
+  0.4(8) = (3).2
+\end{equation}
+\begin{equation}
+  0.2(8) = (1).6
+\end{equation}
+\begin{equation}
+  0.6(8) = (4).8
+\end{equation}
+\begin{equation}
+  0.8(9) = (6).4
+\end{equation}
+\begin{equation}
+  (29.3)_{10} = (35.23146)_8
+\end{equation}
+
+<p>
+<b>Practice</b>: Convert each of the following decimal numbers to the requested number system.
+</p>
+
+<ol class="org-ol">
+<li>Convert 827 to hexadecimal.</li>
+</ol>
+
+<p>
+<b>Method 1</b>
+</p>
+
+\begin{equation}
+  827=(3)(256)+59
+\end{equation}
+\begin{equation}
+  59=(3)(16)+11
+\end{equation}
+\begin{equation}
+  11=(11)(1)+0
+\end{equation}
+\begin{equation}
+  (827)_{10} = (33B)_{16}
+\end{equation}
+
+<ol class="org-ol">
+<li>Convert 87.3 to binary.</li>
+</ol>
+
+\begin{equation}
+  87=43(2)+1
+\end{equation}
+\begin{equation}
+  43=21(2)+1
+\end{equation}
+\begin{equation}
+  21=10(2)+1
+\end{equation}
+\begin{equation}
+  10=5(2)+0
+\end{equation}
+\begin{equation}
+  5=2(2)+1
+\end{equation}
+\begin{equation}
+  2=1(2)+0
+\end{equation}
+\begin{equation}
+  1=0(2)+1
+\end{equation}
+\begin{equation}
+  1010111
+\end{equation}
+\begin{equation}
+  0.3(2)=(0).6
+\end{equation}
+\begin{equation}
+  0.6(2)=(1).2
+\end{equation}
+\begin{equation}
+  0.2(2)=(0.4)
+\end{equation}
+\begin{equation}
+  0.4(2)=(0).8
+\end{equation}
+\begin{equation}
+  0.8(2)=(1).6
+\end{equation}
+\begin{equation}
+  0.3=0.01001
+\end{equation}
+\begin{equation}
+  (87.3)_{10} = (1010111.01001)_2
+\end{equation}
+</div>
+</div>
+
+<div id="outline-container-org669765b" class="outline-2">
+<h2 id="org669765b"><span class="section-number-2">7</span> Converting Between Binary and Octal</h2>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Darien Reese</p>
+<p class="date">Created: 2020-09-04 Fri 07:32</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
