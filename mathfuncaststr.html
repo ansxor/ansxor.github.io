@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2020-09-10 Thu 08:18 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Math Functions, Casting, and Introduction to Strings Exercises</title>
+<meta name="generator" content="Org mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<style>pre.src {background-color: #303030; color: #e5e5e5;}</style>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/styles/bigblow/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/styles/bigblow/css/bigblow.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/styles/bigblow/css/hideshow.css"/>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/bigblow/js/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/bigblow/js/jquery-ui-1.10.2.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/bigblow/js/jquery.localscroll-min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/bigblow/js/jquery.scrollTo-1.4.3.1-min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/bigblow/js/jquery.zclip.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/bigblow/js/bigblow.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/bigblow/js/hideshow.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/styles/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2020 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Math Functions, Casting, and Introduction to Strings Exercises</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org3a8d8b7">1. Part 1: Mathematical Functions</a>
+<ul>
+<li><a href="#org023a73e">1.1. Rewrite the following mathematical expressions in Java</a>
+<ul>
+<li><a href="#org2a28435">1.1.1. Equation 1</a></li>
+<li><a href="#org6fafbfe">1.1.2. Equation 2</a></li>
+<li><a href="#orgf164b4b">1.1.3. Equation 3</a></li>
+</ul>
+</li>
+<li><a href="#org3419a95">1.2. Write a Java statement that will take a number (of type double) and round it to the nearest 1000th, storing the answer in the variable result (of type double).</a></li>
+<li><a href="#orgc37b087">1.3. Write a Java statement that will take a number (of type double) and round it to the nearest 100th, storing the answer in the variable result (of type int).</a></li>
+</ul>
+</li>
+<li><a href="#org43fc65d">2. Part 2: Casting</a>
+<ul>
+<li><a href="#org824f135">2.1. Computer the following Java expressions, if possible.</a>
+<ul>
+<li><a href="#org4507ada">2.1.1. double x = 7.5 * 3 / 4;</a></li>
+<li><a href="#org6b46c6f">2.1.2. double x = 3 / 4 * 7.5</a></li>
+</ul>
+</li>
+<li><a href="#org2e310d6">2.2. For each of the following Java statements that involve calculations, determine the result (and its data type) of each line of code, if possible.</a>
+<ul>
+<li><a href="#org5e45966">2.2.1. aDouble = aFloat / anInt;</a></li>
+<li><a href="#orgfb04914">2.2.2. aFloat = aShort / anInt;</a></li>
+<li><a href="#org1cb13ed">2.2.3. aDouble = anInt / aFloat + aLong;</a></li>
+<li><a href="#org3828be4">2.2.4. aShort = anInt / aLong;</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgf847d2f">3. Part 3: Introduction to Strings</a>
+<ul>
+<li><a href="#orgd28dc86">3.1. Consider the following variable declarations</a>
+<ul>
+<li><a href="#org8679159">3.1.1. "Johnny 5 is alive!"</a></li>
+<li><a href="#org5f226f2">3.1.2. "Captain Johnny is alive!"</a></li>
+</ul>
+</li>
+<li><a href="#org2d1da4f">3.2. What is the length of each of the strings in parts (a) and (b) above? What Java command would report the length?</a></li>
+<li><a href="#orgfea82c1">3.3. Given the variable declaration</a></li>
+</ul>
+</li>
+<li><a href="#org4313606">4. Part 4: Commenting</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3a8d8b7" class="outline-2">
+<h2 id="org3a8d8b7"><span class="section-number-2">1</span> Part 1: Mathematical Functions</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org023a73e" class="outline-3">
+<h3 id="org023a73e"><span class="section-number-3">1.1</span> Rewrite the following mathematical expressions in Java</h3>
+<div class="outline-text-3" id="text-1-1">
+</div>
+<div id="outline-container-org2a28435" class="outline-4">
+<h4 id="org2a28435"><span class="section-number-4">1.1.1</span> Equation 1</h4>
+<div class="outline-text-4" id="text-1-1-1">
+\begin{equation}
+	\ln{X^{Y}}
+\end{equation}
+
+<div class="org-src-container">
+<pre class="src src-java">Math.log<span style="color: #f8f8f2;">(</span>Math.pow<span style="color: #8be9fd;">(</span>X, Y<span style="color: #8be9fd;">)</span><span style="color: #f8f8f2;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6fafbfe" class="outline-4">
+<h4 id="org6fafbfe"><span class="section-number-4">1.1.2</span> Equation 2</h4>
+<div class="outline-text-4" id="text-1-1-2">
+\begin{equation}
+	\sqrt{X-Y^{3}}
+\end{equation}
+
+<div class="org-src-container">
+<pre class="src src-java">Math.sqrt<span style="color: #f8f8f2;">(</span>X - Math.pow<span style="color: #8be9fd;">(</span>Y, 3<span style="color: #8be9fd;">)</span><span style="color: #f8f8f2;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf164b4b" class="outline-4">
+<h4 id="orgf164b4b"><span class="section-number-4">1.1.3</span> Equation 3</h4>
+<div class="outline-text-4" id="text-1-1-3">
+\begin{equation}
+	|XY-\frac{W}{Z}|
+\end{equation}
+
+<div class="org-src-container">
+<pre class="src src-java">Math.abs<span style="color: #f8f8f2;">(</span>X * Y - W / Z<span style="color: #f8f8f2;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3419a95" class="outline-3">
+<h3 id="org3419a95"><span class="section-number-3">1.2</span> Write a Java statement that will take a number (of type double) and round it to the nearest 1000th, storing the answer in the variable result (of type double).</h3>
+<div class="outline-text-3" id="text-1-2">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #bd93f9;">Scanner</span> <span style="color: #f8f8f2; font-weight: bold;">keyboard</span> = <span style="color: #ff79c6; font-weight: bold;">new</span> <span style="color: #bd93f9;">Scanner</span><span style="color: #f8f8f2;">(</span>System.in<span style="color: #f8f8f2;">)</span>;
+<span style="color: #bd93f9;">double</span> <span style="color: #f8f8f2; font-weight: bold;">number</span> = keyboard.nextDouble<span style="color: #f8f8f2;">()</span>;
+<span style="color: #bd93f9;">double</span> <span style="color: #f8f8f2; font-weight: bold;">result</span> = Math.round<span style="color: #f8f8f2;">(</span>number / 1e3<span style="color: #f8f8f2;">)</span> * 1e3f;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc37b087" class="outline-3">
+<h3 id="orgc37b087"><span class="section-number-3">1.3</span> Write a Java statement that will take a number (of type double) and round it to the nearest 100th, storing the answer in the variable result (of type int).</h3>
+<div class="outline-text-3" id="text-1-3">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #bd93f9;">Scanner</span> <span style="color: #f8f8f2; font-weight: bold;">keyboard</span> = <span style="color: #ff79c6; font-weight: bold;">new</span> <span style="color: #bd93f9;">Scanner</span><span style="color: #f8f8f2;">(</span>System.in<span style="color: #f8f8f2;">)</span>;
+<span style="color: #bd93f9;">double</span> <span style="color: #f8f8f2; font-weight: bold;">number</span> = keyboard.nextDouble<span style="color: #f8f8f2;">()</span>;
+<span style="color: #bd93f9;">int</span> <span style="color: #f8f8f2; font-weight: bold;">result</span> = Math.round<span style="color: #f8f8f2;">(</span>number / 1e2<span style="color: #f8f8f2;">)</span> * 1e2;
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org43fc65d" class="outline-2">
+<h2 id="org43fc65d"><span class="section-number-2">2</span> Part 2: Casting</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org824f135" class="outline-3">
+<h3 id="org824f135"><span class="section-number-3">2.1</span> Computer the following Java expressions, if possible.</h3>
+<div class="outline-text-3" id="text-2-1">
+</div>
+<div id="outline-container-org4507ada" class="outline-4">
+<h4 id="org4507ada"><span class="section-number-4">2.1.1</span> double x = 7.5 * 3 / 4;</h4>
+<div class="outline-text-4" id="text-2-1-1">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ff79c6; font-weight: bold;">public</span> <span style="color: #ff79c6; font-weight: bold;">class</span> <span style="color: #bd93f9;">DoubleCalculation</span> <span style="color: #f8f8f2;">{</span>
+    <span style="color: #ff79c6; font-weight: bold;">public</span> <span style="color: #ff79c6; font-weight: bold;">static</span> <span style="color: #bd93f9;">void</span> <span style="color: #50fa7b; font-weight: bold;">main</span><span style="color: #8be9fd;">(</span><span style="color: #bd93f9;">String</span><span style="color: #bd93f9;">[]</span> <span style="color: #f8f8f2; font-weight: bold;">args</span><span style="color: #8be9fd;">)</span> <span style="color: #8be9fd;">{</span>
+        <span style="color: #bd93f9;">double</span> <span style="color: #f8f8f2; font-weight: bold;">x</span> = 7.5 * 3 / 4;
+        System.out.println<span style="color: #bd93f9;">(</span>x<span style="color: #bd93f9;">)</span>;
+    <span style="color: #8be9fd;">}</span>
+<span style="color: #f8f8f2;">}</span>
+</pre>
+</div>
+
+<pre class="example">
+5.625
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org6b46c6f" class="outline-4">
+<h4 id="org6b46c6f"><span class="section-number-4">2.1.2</span> double x = 3 / 4 * 7.5</h4>
+<div class="outline-text-4" id="text-2-1-2">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #ff79c6; font-weight: bold;">public</span> <span style="color: #ff79c6; font-weight: bold;">class</span> <span style="color: #bd93f9;">DoubleCalculation</span> <span style="color: #f8f8f2;">{</span>
+    <span style="color: #ff79c6; font-weight: bold;">public</span> <span style="color: #ff79c6; font-weight: bold;">static</span> <span style="color: #bd93f9;">void</span> <span style="color: #50fa7b; font-weight: bold;">main</span><span style="color: #8be9fd;">(</span><span style="color: #bd93f9;">String</span><span style="color: #bd93f9;">[]</span> <span style="color: #f8f8f2; font-weight: bold;">args</span><span style="color: #8be9fd;">)</span> <span style="color: #8be9fd;">{</span>
+        <span style="color: #bd93f9;">double</span> <span style="color: #f8f8f2; font-weight: bold;">x</span> = 3 / 4 * 7.5;
+        System.out.println<span style="color: #bd93f9;">(</span>x<span style="color: #bd93f9;">)</span>;
+    <span style="color: #8be9fd;">}</span>
+<span style="color: #f8f8f2;">}</span>
+</pre>
+</div>
+
+<pre class="example">
+0.0
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2e310d6" class="outline-3">
+<h3 id="org2e310d6"><span class="section-number-3">2.2</span> For each of the following Java statements that involve calculations, determine the result (and its data type) of each line of code, if possible.</h3>
+<div class="outline-text-3" id="text-2-2">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #bd93f9;">short</span> <span style="color: #f8f8f2; font-weight: bold;">aShort</span> = 1;
+<span style="color: #bd93f9;">int</span> <span style="color: #f8f8f2; font-weight: bold;">anInt</span> = 2;
+<span style="color: #bd93f9;">long</span> <span style="color: #f8f8f2; font-weight: bold;">aLong</span> = 3;
+<span style="color: #bd93f9;">float</span> <span style="color: #f8f8f2; font-weight: bold;">aFloat</span> = 4.5f;
+<span style="color: #bd93f9;">double</span> <span style="color: #f8f8f2; font-weight: bold;">aDouble</span> = 6.7;
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org5e45966" class="outline-4">
+<h4 id="org5e45966"><span class="section-number-4">2.2.1</span> aDouble = aFloat / anInt;</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<p>
+1.75
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgfb04914" class="outline-4">
+<h4 id="orgfb04914"><span class="section-number-4">2.2.2</span> aFloat = aShort / anInt;</h4>
+<div class="outline-text-4" id="text-2-2-2">
+<p>
+0.0
+</p>
+</div>
+</div>
+
+<div id="outline-container-org1cb13ed" class="outline-4">
+<h4 id="org1cb13ed"><span class="section-number-4">2.2.3</span> aDouble = anInt / aFloat + aLong;</h4>
+<div class="outline-text-4" id="text-2-2-3">
+<p>
+3.444444~
+</p>
+</div>
+</div>
+
+<div id="outline-container-org3828be4" class="outline-4">
+<h4 id="org3828be4"><span class="section-number-4">2.2.4</span> aShort = anInt / aLong;</h4>
+<div class="outline-text-4" id="text-2-2-4">
+<p>
+0
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf847d2f" class="outline-2">
+<h2 id="orgf847d2f"><span class="section-number-2">3</span> Part 3: Introduction to Strings</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-orgd28dc86" class="outline-3">
+<h3 id="orgd28dc86"><span class="section-number-3">3.1</span> Consider the following variable declarations</h3>
+<div class="outline-text-3" id="text-3-1">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #bd93f9;">String</span> <span style="color: #f8f8f2; font-weight: bold;">firstName</span> = <span style="color: #f1fa8c;">"Johnny"</span>;
+<span style="color: #bd93f9;">String</span> <span style="color: #f8f8f2; font-weight: bold;">title</span> = <span style="color: #f1fa8c;">"Captain"</span>;
+<span style="color: #bd93f9;">String</span> <span style="color: #f8f8f2; font-weight: bold;">status</span> = <span style="color: #f1fa8c;">" is alive!"</span>;
+<span style="color: #bd93f9;">String</span> <span style="color: #f8f8f2; font-weight: bold;">proclamation</span>;
+</pre>
+</div>
+
+<p>
+Write the Java code to construct each of the sentences below using the variables above, assign it to the variable <code>proclamation</code>, and print it to the screen.
+</p>
+</div>
+
+<div id="outline-container-org8679159" class="outline-4">
+<h4 id="org8679159"><span class="section-number-4">3.1.1</span> "Johnny 5 is alive!"</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<div class="org-src-container">
+<pre class="src src-java">proclamation = firstName + <span style="color: #f1fa8c;">" 5"</span> + status;
+System.out.println<span style="color: #f8f8f2;">(</span>proclamation<span style="color: #f8f8f2;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org5f226f2" class="outline-4">
+<h4 id="org5f226f2"><span class="section-number-4">3.1.2</span> "Captain Johnny is alive!"</h4>
+<div class="outline-text-4" id="text-3-1-2">
+<div class="org-src-container">
+<pre class="src src-java">proclamation = title + <span style="color: #f1fa8c;">" "</span> + firstName + status;
+System.out.println<span style="color: #f8f8f2;">(</span>proclamation<span style="color: #f8f8f2;">)</span>;
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org2d1da4f" class="outline-3">
+<h3 id="org2d1da4f"><span class="section-number-3">3.2</span> What is the length of each of the strings in parts (a) and (b) above? What Java command would report the length?</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+<code>Johnny 5 is alive!</code> = 18
+</p>
+
+<p>
+<code>Captain Johnny is alive!</code> = 24
+</p>
+
+<div class="org-src-container">
+<pre class="src src-java">x.length<span style="color: #f8f8f2;">()</span>;
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfea82c1" class="outline-3">
+<h3 id="orgfea82c1"><span class="section-number-3">3.3</span> Given the variable declaration</h3>
+<div class="outline-text-3" id="text-3-3">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #bd93f9;">String</span> <span style="color: #f8f8f2; font-weight: bold;">six</span> = <span style="color: #ff79c6; font-weight: bold;">new</span> <span style="color: #bd93f9;">String</span> <span style="color: #f8f8f2;">(</span>String.valueOf<span style="color: #8be9fd;">(</span>6<span style="color: #8be9fd;">)</span><span style="color: #f8f8f2;">)</span>;
+</pre>
+</div>
+<p>
+What is the value of <code>six.length()</code>?
+</p>
+
+<p>
+1
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4313606" class="outline-2">
+<h2 id="org4313606"><span class="section-number-2">4</span> Part 4: Commenting</h2>
+<div class="outline-text-2" id="text-4">
+<div class="org-src-container">
+<pre class="src src-java"><span style="color: #6272a4;">/**</span>
+<span style="color: #6272a4;">   &#160;*&#160;</span><span style="color: #8be9fd;">&lt;p&gt;</span><span style="color: #6272a4;">Course:&#160;&#160;&#160;420-G10&#160;Programming&#160;I</span><span style="color: #8be9fd;">&lt;/p&gt;</span>
+<span style="color: #6272a4;">   &#160;*&#160;</span><span style="color: #8be9fd;">&lt;p&gt;</span><span style="color: #6272a4;">Title:&#160;&#160;&#160;&#160;Doing Stuff</span><span style="color: #8be9fd;">&lt;/p&gt;</span>
+<span style="color: #6272a4;">   &#160;*&#160;</span><span style="color: #8be9fd;">&lt;p&gt;</span><span style="color: #6272a4;">Description:&#160;This&#160;program&#160;prints&#160;the&#160;quotient&#160;of&#160;two&#160;numbers&#160;and their </span>
+<span style="color: #6272a4;">   * remainder on&#160;the&#160;screen.</span><span style="color: #8be9fd;">&lt;/p&gt;</span>
+<span style="color: #6272a4;">   &#160;*&#160;@author&#160;</span>
+<span style="color: #6272a4;">   &#160;*/</span>
+<span style="color: #ff79c6; font-weight: bold;">public</span> <span style="color: #ff79c6; font-weight: bold;">class</span> <span style="color: #bd93f9;">SimpleDivider</span>
+<span style="color: #f8f8f2;">{</span>
+    <span style="color: #ff79c6; font-weight: bold;">public</span> <span style="color: #ff79c6; font-weight: bold;">static</span> <span style="color: #bd93f9;">void</span> <span style="color: #50fa7b; font-weight: bold;">main</span> <span style="color: #8be9fd;">(</span><span style="color: #bd93f9;">String</span> <span style="color: #f8f8f2; font-weight: bold;">args</span><span style="color: #bd93f9;">[]</span><span style="color: #8be9fd;">)</span>
+    <span style="color: #8be9fd;">{</span>
+        <span style="color: #6272a4;">// </span><span style="color: #6272a4;">#TODO: SOMETHING USEFUL</span>
+        <span style="color: #6272a4;">// </span><span style="color: #6272a4;">declaring variables</span>
+        <span style="color: #bd93f9;">int</span> <span style="color: #f8f8f2; font-weight: bold;">num1</span>, <span style="color: #f8f8f2; font-weight: bold;">num2</span>, <span style="color: #f8f8f2; font-weight: bold;">sum</span>, <span style="color: #f8f8f2; font-weight: bold;">quotient</span>, <span style="color: #f8f8f2; font-weight: bold;">remainder</span>; 
+
+        <span style="color: #6272a4;">// </span><span style="color: #6272a4;">numbers used for arithmetic examples</span>
+        num1 = 1;                                       
+        num2 = 3;
+
+        <span style="color: #6272a4;">// </span><span style="color: #6272a4;">perform arithmetic ?</span>
+        quotient = num1/num2;           
+        remainder = num1 % num2;                
+
+        <span style="color: #6272a4;">// </span><span style="color: #6272a4;">display the results</span>
+        System.out.println <span style="color: #bd93f9;">(</span><span style="color: #f1fa8c;">"The quotient of "</span>+ num1 + <span style="color: #f1fa8c;">" divided by "</span> 
+                            + num2 + <span style="color: #f1fa8c;">" is "</span> + quotient<span style="color: #bd93f9;">)</span>;                
+
+        System.out.println <span style="color: #bd93f9;">(</span><span style="color: #f1fa8c;">"The remainder of "</span>+ num1 + <span style="color: #f1fa8c;">" divided by "</span> 
+                            + num2 + <span style="color: #f1fa8c;">" is "</span> + remainder<span style="color: #bd93f9;">)</span>;       
+
+    <span style="color: #8be9fd;">}</span> 
+<span style="color: #f8f8f2;">}</span> 
+</pre>
+</div>
+
+<pre class="example">
+The quotient of 1 divided by 3 is 0
+The remainder of 1 divided by 3 is 1
+</pre>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2020-09-10 Thu 08:18</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
