@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-09-10 Thu 08:18 -->
+<!-- 2020-09-11 Fri 09:05 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Math Functions, Casting, and Introduction to Strings Exercises</title>
@@ -280,148 +280,153 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org3a8d8b7">1. Part 1: Mathematical Functions</a>
+<li><a href="#org05952b1">1. Part 1: Mathematical Functions</a>
 <ul>
-<li><a href="#org023a73e">1.1. Rewrite the following mathematical expressions in Java</a>
+<li><a href="#orgb95ba5a">1.1. Rewrite the following mathematical expressions in Java</a>
 <ul>
-<li><a href="#org2a28435">1.1.1. Equation 1</a></li>
-<li><a href="#org6fafbfe">1.1.2. Equation 2</a></li>
-<li><a href="#orgf164b4b">1.1.3. Equation 3</a></li>
+<li><a href="#org588ca3c">1.1.1. Equation 1</a></li>
+<li><a href="#org0640a6a">1.1.2. Equation 2</a></li>
+<li><a href="#org0939c6a">1.1.3. Equation 3</a></li>
 </ul>
 </li>
-<li><a href="#org3419a95">1.2. Write a Java statement that will take a number (of type double) and round it to the nearest 1000th, storing the answer in the variable result (of type double).</a></li>
-<li><a href="#orgc37b087">1.3. Write a Java statement that will take a number (of type double) and round it to the nearest 100th, storing the answer in the variable result (of type int).</a></li>
+<li><a href="#org1a1b4cf">1.2. Write a Java statement that will take a number (of type double) and round it to the nearest 1000th, storing the answer in the variable result (of type double).</a></li>
+<li><a href="#orgce553b2">1.3. Write a Java statement that will take a number (of type double) and round it to the nearest 100th, storing the answer in the variable result (of type int).</a></li>
 </ul>
 </li>
-<li><a href="#org43fc65d">2. Part 2: Casting</a>
+<li><a href="#orgef5e04b">2. Part 2: Casting</a>
 <ul>
-<li><a href="#org824f135">2.1. Computer the following Java expressions, if possible.</a>
+<li><a href="#org703689a">2.1. Computer the following Java expressions, if possible.</a>
 <ul>
-<li><a href="#org4507ada">2.1.1. double x = 7.5 * 3 / 4;</a></li>
-<li><a href="#org6b46c6f">2.1.2. double x = 3 / 4 * 7.5</a></li>
+<li><a href="#org5644e06">2.1.1. double x = 7.5 * 3 / 4;</a></li>
+<li><a href="#orga88411c">2.1.2. double x = 3 / 4 * 7.5</a></li>
 </ul>
 </li>
-<li><a href="#org2e310d6">2.2. For each of the following Java statements that involve calculations, determine the result (and its data type) of each line of code, if possible.</a>
+<li><a href="#org91d08e1">2.2. For each of the following Java statements that involve calculations, determine the result (and its data type) of each line of code, if possible.</a>
 <ul>
-<li><a href="#org5e45966">2.2.1. aDouble = aFloat / anInt;</a></li>
-<li><a href="#orgfb04914">2.2.2. aFloat = aShort / anInt;</a></li>
-<li><a href="#org1cb13ed">2.2.3. aDouble = anInt / aFloat + aLong;</a></li>
-<li><a href="#org3828be4">2.2.4. aShort = anInt / aLong;</a></li>
+<li><a href="#org208710a">2.2.1. aDouble = aFloat / anInt;</a></li>
+<li><a href="#org0a87129">2.2.2. aFloat = aShort / anInt;</a></li>
+<li><a href="#org28b34ad">2.2.3. aDouble = anInt / aFloat + aLong;</a></li>
+<li><a href="#org30d5c19">2.2.4. aShort = anInt / aLong;</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#orgf847d2f">3. Part 3: Introduction to Strings</a>
+<li><a href="#orgc33a889">3. Part 3: Introduction to Strings</a>
 <ul>
-<li><a href="#orgd28dc86">3.1. Consider the following variable declarations</a>
+<li><a href="#org99164ed">3.1. Consider the following variable declarations</a>
 <ul>
-<li><a href="#org8679159">3.1.1. "Johnny 5 is alive!"</a></li>
-<li><a href="#org5f226f2">3.1.2. "Captain Johnny is alive!"</a></li>
+<li><a href="#orgc78196d">3.1.1. "Johnny 5 is alive!"</a></li>
+<li><a href="#org33435c2">3.1.2. "Captain Johnny is alive!"</a></li>
 </ul>
 </li>
-<li><a href="#org2d1da4f">3.2. What is the length of each of the strings in parts (a) and (b) above? What Java command would report the length?</a></li>
-<li><a href="#orgfea82c1">3.3. Given the variable declaration</a></li>
+<li><a href="#orge67244d">3.2. What is the length of each of the strings in parts (a) and (b) above? What Java command would report the length?</a></li>
+<li><a href="#org8d86b4f">3.3. Given the variable declaration</a></li>
 </ul>
 </li>
-<li><a href="#org4313606">4. Part 4: Commenting</a></li>
+<li><a href="#orgde65149">4. Part 4: Commenting</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org3a8d8b7" class="outline-2">
-<h2 id="org3a8d8b7"><span class="section-number-2">1</span> Part 1: Mathematical Functions</h2>
+<div id="outline-container-org05952b1" class="outline-2">
+<h2 id="org05952b1"><span class="section-number-2">1</span> Part 1: Mathematical Functions</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<div id="outline-container-org023a73e" class="outline-3">
-<h3 id="org023a73e"><span class="section-number-3">1.1</span> Rewrite the following mathematical expressions in Java</h3>
+<div id="outline-container-orgb95ba5a" class="outline-3">
+<h3 id="orgb95ba5a"><span class="section-number-3">1.1</span> Rewrite the following mathematical expressions in Java</h3>
 <div class="outline-text-3" id="text-1-1">
+<div class="org-src-container">
+<pre class="src src-org"><span style="color: #3b6ea8; font-weight: bold;">* test owo</span>
+</pre>
 </div>
-<div id="outline-container-org2a28435" class="outline-4">
-<h4 id="org2a28435"><span class="section-number-4">1.1.1</span> Equation 1</h4>
+</div>
+
+<div id="outline-container-org588ca3c" class="outline-4">
+<h4 id="org588ca3c"><span class="section-number-4">1.1.1</span> Equation 1</h4>
 <div class="outline-text-4" id="text-1-1-1">
 \begin{equation}
 	\ln{X^{Y}}
 \end{equation}
 
 <div class="org-src-container">
-<pre class="src src-java">Math.log<span style="color: #f8f8f2;">(</span>Math.pow<span style="color: #8be9fd;">(</span>X, Y<span style="color: #8be9fd;">)</span><span style="color: #f8f8f2;">)</span>;
+<pre class="src src-java">Math.log<span style="color: #3b6ea8;">(</span>Math.pow<span style="color: #97365b;">(</span>X, Y<span style="color: #97365b;">)</span><span style="color: #3b6ea8;">)</span>;
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org6fafbfe" class="outline-4">
-<h4 id="org6fafbfe"><span class="section-number-4">1.1.2</span> Equation 2</h4>
+<div id="outline-container-org0640a6a" class="outline-4">
+<h4 id="org0640a6a"><span class="section-number-4">1.1.2</span> Equation 2</h4>
 <div class="outline-text-4" id="text-1-1-2">
 \begin{equation}
 	\sqrt{X-Y^{3}}
 \end{equation}
 
 <div class="org-src-container">
-<pre class="src src-java">Math.sqrt<span style="color: #f8f8f2;">(</span>X - Math.pow<span style="color: #8be9fd;">(</span>Y, 3<span style="color: #8be9fd;">)</span><span style="color: #f8f8f2;">)</span>;
+<pre class="src src-java">Math.sqrt<span style="color: #3b6ea8;">(</span>X - Math.pow<span style="color: #97365b;">(</span>Y, 3<span style="color: #97365b;">)</span><span style="color: #3b6ea8;">)</span>;
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgf164b4b" class="outline-4">
-<h4 id="orgf164b4b"><span class="section-number-4">1.1.3</span> Equation 3</h4>
+<div id="outline-container-org0939c6a" class="outline-4">
+<h4 id="org0939c6a"><span class="section-number-4">1.1.3</span> Equation 3</h4>
 <div class="outline-text-4" id="text-1-1-3">
 \begin{equation}
 	|XY-\frac{W}{Z}|
 \end{equation}
 
 <div class="org-src-container">
-<pre class="src src-java">Math.abs<span style="color: #f8f8f2;">(</span>X * Y - W / Z<span style="color: #f8f8f2;">)</span>;
+<pre class="src src-java">Math.abs<span style="color: #3b6ea8;">(</span>X * Y - W / Z<span style="color: #3b6ea8;">)</span>;
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org3419a95" class="outline-3">
-<h3 id="org3419a95"><span class="section-number-3">1.2</span> Write a Java statement that will take a number (of type double) and round it to the nearest 1000th, storing the answer in the variable result (of type double).</h3>
+<div id="outline-container-org1a1b4cf" class="outline-3">
+<h3 id="org1a1b4cf"><span class="section-number-3">1.2</span> Write a Java statement that will take a number (of type double) and round it to the nearest 1000th, storing the answer in the variable result (of type double).</h3>
 <div class="outline-text-3" id="text-1-2">
 <div class="org-src-container">
-<pre class="src src-java"><span style="color: #bd93f9;">Scanner</span> <span style="color: #f8f8f2; font-weight: bold;">keyboard</span> = <span style="color: #ff79c6; font-weight: bold;">new</span> <span style="color: #bd93f9;">Scanner</span><span style="color: #f8f8f2;">(</span>System.in<span style="color: #f8f8f2;">)</span>;
-<span style="color: #bd93f9;">double</span> <span style="color: #f8f8f2; font-weight: bold;">number</span> = keyboard.nextDouble<span style="color: #f8f8f2;">()</span>;
-<span style="color: #bd93f9;">double</span> <span style="color: #f8f8f2; font-weight: bold;">result</span> = Math.round<span style="color: #f8f8f2;">(</span>number / 1e3<span style="color: #f8f8f2;">)</span> * 1e3f;
+<pre class="src src-java"><span style="color: #9a7500;">Scanner</span> <span style="color: #cb9aad;">keyboard</span> = <span style="color: #3b6ea8;">new</span> <span style="color: #9a7500;">Scanner</span><span style="color: #3b6ea8;">(</span>System.in<span style="color: #3b6ea8;">)</span>;
+<span style="color: #9a7500;">double</span> <span style="color: #cb9aad;">number</span> = keyboard.nextDouble<span style="color: #3b6ea8;">()</span>;
+<span style="color: #9a7500;">double</span> <span style="color: #cb9aad;">result</span> = Math.round<span style="color: #3b6ea8;">(</span>number / 1e3<span style="color: #3b6ea8;">)</span> * 1e3f;
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgc37b087" class="outline-3">
-<h3 id="orgc37b087"><span class="section-number-3">1.3</span> Write a Java statement that will take a number (of type double) and round it to the nearest 100th, storing the answer in the variable result (of type int).</h3>
+<div id="outline-container-orgce553b2" class="outline-3">
+<h3 id="orgce553b2"><span class="section-number-3">1.3</span> Write a Java statement that will take a number (of type double) and round it to the nearest 100th, storing the answer in the variable result (of type int).</h3>
 <div class="outline-text-3" id="text-1-3">
 <div class="org-src-container">
-<pre class="src src-java"><span style="color: #bd93f9;">Scanner</span> <span style="color: #f8f8f2; font-weight: bold;">keyboard</span> = <span style="color: #ff79c6; font-weight: bold;">new</span> <span style="color: #bd93f9;">Scanner</span><span style="color: #f8f8f2;">(</span>System.in<span style="color: #f8f8f2;">)</span>;
-<span style="color: #bd93f9;">double</span> <span style="color: #f8f8f2; font-weight: bold;">number</span> = keyboard.nextDouble<span style="color: #f8f8f2;">()</span>;
-<span style="color: #bd93f9;">int</span> <span style="color: #f8f8f2; font-weight: bold;">result</span> = Math.round<span style="color: #f8f8f2;">(</span>number / 1e2<span style="color: #f8f8f2;">)</span> * 1e2;
+<pre class="src src-java"><span style="color: #9a7500;">Scanner</span> <span style="color: #cb9aad;">keyboard</span> = <span style="color: #3b6ea8;">new</span> <span style="color: #9a7500;">Scanner</span><span style="color: #3b6ea8;">(</span>System.in<span style="color: #3b6ea8;">)</span>;
+<span style="color: #9a7500;">double</span> <span style="color: #cb9aad;">number</span> = keyboard.nextDouble<span style="color: #3b6ea8;">()</span>;
+<span style="color: #9a7500;">int</span> <span style="color: #cb9aad;">result</span> = Math.round<span style="color: #3b6ea8;">(</span>number * 1e2<span style="color: #3b6ea8;">)</span> / 1e2;
 </pre>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org43fc65d" class="outline-2">
-<h2 id="org43fc65d"><span class="section-number-2">2</span> Part 2: Casting</h2>
+<div id="outline-container-orgef5e04b" class="outline-2">
+<h2 id="orgef5e04b"><span class="section-number-2">2</span> Part 2: Casting</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org824f135" class="outline-3">
-<h3 id="org824f135"><span class="section-number-3">2.1</span> Computer the following Java expressions, if possible.</h3>
+<div id="outline-container-org703689a" class="outline-3">
+<h3 id="org703689a"><span class="section-number-3">2.1</span> Computer the following Java expressions, if possible.</h3>
 <div class="outline-text-3" id="text-2-1">
 </div>
-<div id="outline-container-org4507ada" class="outline-4">
-<h4 id="org4507ada"><span class="section-number-4">2.1.1</span> double x = 7.5 * 3 / 4;</h4>
+<div id="outline-container-org5644e06" class="outline-4">
+<h4 id="org5644e06"><span class="section-number-4">2.1.1</span> double x = 7.5 * 3 / 4;</h4>
 <div class="outline-text-4" id="text-2-1-1">
 <div class="org-src-container">
-<pre class="src src-java"><span style="color: #ff79c6; font-weight: bold;">public</span> <span style="color: #ff79c6; font-weight: bold;">class</span> <span style="color: #bd93f9;">DoubleCalculation</span> <span style="color: #f8f8f2;">{</span>
-    <span style="color: #ff79c6; font-weight: bold;">public</span> <span style="color: #ff79c6; font-weight: bold;">static</span> <span style="color: #bd93f9;">void</span> <span style="color: #50fa7b; font-weight: bold;">main</span><span style="color: #8be9fd;">(</span><span style="color: #bd93f9;">String</span><span style="color: #bd93f9;">[]</span> <span style="color: #f8f8f2; font-weight: bold;">args</span><span style="color: #8be9fd;">)</span> <span style="color: #8be9fd;">{</span>
-        <span style="color: #bd93f9;">double</span> <span style="color: #f8f8f2; font-weight: bold;">x</span> = 7.5 * 3 / 4;
-        System.out.println<span style="color: #bd93f9;">(</span>x<span style="color: #bd93f9;">)</span>;
-    <span style="color: #8be9fd;">}</span>
-<span style="color: #f8f8f2;">}</span>
+<pre class="src src-java"><span style="color: #3b6ea8;">public</span> <span style="color: #3b6ea8;">class</span> <span style="color: #9a7500;">DoubleCalculation</span> <span style="color: #3b6ea8;">{</span>
+    <span style="color: #3b6ea8;">public</span> <span style="color: #3b6ea8;">static</span> <span style="color: #9a7500;">void</span> <span style="color: #29838d;">main</span><span style="color: #97365b;">(</span><span style="color: #9a7500;">String</span><span style="color: #4f894c;">[]</span> <span style="color: #cb9aad;">args</span><span style="color: #97365b;">)</span> <span style="color: #97365b;">{</span>
+        <span style="color: #9a7500;">double</span> <span style="color: #cb9aad;">x</span> = 7.5 * 3 / 4;
+        System.out.println<span style="color: #4f894c;">(</span>x<span style="color: #4f894c;">)</span>;
+    <span style="color: #97365b;">}</span>
+<span style="color: #3b6ea8;">}</span>
 </pre>
 </div>
 
@@ -431,16 +436,16 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org6b46c6f" class="outline-4">
-<h4 id="org6b46c6f"><span class="section-number-4">2.1.2</span> double x = 3 / 4 * 7.5</h4>
+<div id="outline-container-orga88411c" class="outline-4">
+<h4 id="orga88411c"><span class="section-number-4">2.1.2</span> double x = 3 / 4 * 7.5</h4>
 <div class="outline-text-4" id="text-2-1-2">
 <div class="org-src-container">
-<pre class="src src-java"><span style="color: #ff79c6; font-weight: bold;">public</span> <span style="color: #ff79c6; font-weight: bold;">class</span> <span style="color: #bd93f9;">DoubleCalculation</span> <span style="color: #f8f8f2;">{</span>
-    <span style="color: #ff79c6; font-weight: bold;">public</span> <span style="color: #ff79c6; font-weight: bold;">static</span> <span style="color: #bd93f9;">void</span> <span style="color: #50fa7b; font-weight: bold;">main</span><span style="color: #8be9fd;">(</span><span style="color: #bd93f9;">String</span><span style="color: #bd93f9;">[]</span> <span style="color: #f8f8f2; font-weight: bold;">args</span><span style="color: #8be9fd;">)</span> <span style="color: #8be9fd;">{</span>
-        <span style="color: #bd93f9;">double</span> <span style="color: #f8f8f2; font-weight: bold;">x</span> = 3 / 4 * 7.5;
-        System.out.println<span style="color: #bd93f9;">(</span>x<span style="color: #bd93f9;">)</span>;
-    <span style="color: #8be9fd;">}</span>
-<span style="color: #f8f8f2;">}</span>
+<pre class="src src-java"><span style="color: #3b6ea8;">public</span> <span style="color: #3b6ea8;">class</span> <span style="color: #9a7500;">DoubleCalculation</span> <span style="color: #3b6ea8;">{</span>
+    <span style="color: #3b6ea8;">public</span> <span style="color: #3b6ea8;">static</span> <span style="color: #9a7500;">void</span> <span style="color: #29838d;">main</span><span style="color: #97365b;">(</span><span style="color: #9a7500;">String</span><span style="color: #4f894c;">[]</span> <span style="color: #cb9aad;">args</span><span style="color: #97365b;">)</span> <span style="color: #97365b;">{</span>
+        <span style="color: #9a7500;">double</span> <span style="color: #cb9aad;">x</span> = 3 / 4 * 7.5;
+        System.out.println<span style="color: #4f894c;">(</span>x<span style="color: #4f894c;">)</span>;
+    <span style="color: #97365b;">}</span>
+<span style="color: #3b6ea8;">}</span>
 </pre>
 </div>
 
@@ -451,30 +456,30 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org2e310d6" class="outline-3">
-<h3 id="org2e310d6"><span class="section-number-3">2.2</span> For each of the following Java statements that involve calculations, determine the result (and its data type) of each line of code, if possible.</h3>
+<div id="outline-container-org91d08e1" class="outline-3">
+<h3 id="org91d08e1"><span class="section-number-3">2.2</span> For each of the following Java statements that involve calculations, determine the result (and its data type) of each line of code, if possible.</h3>
 <div class="outline-text-3" id="text-2-2">
 <div class="org-src-container">
-<pre class="src src-java"><span style="color: #bd93f9;">short</span> <span style="color: #f8f8f2; font-weight: bold;">aShort</span> = 1;
-<span style="color: #bd93f9;">int</span> <span style="color: #f8f8f2; font-weight: bold;">anInt</span> = 2;
-<span style="color: #bd93f9;">long</span> <span style="color: #f8f8f2; font-weight: bold;">aLong</span> = 3;
-<span style="color: #bd93f9;">float</span> <span style="color: #f8f8f2; font-weight: bold;">aFloat</span> = 4.5f;
-<span style="color: #bd93f9;">double</span> <span style="color: #f8f8f2; font-weight: bold;">aDouble</span> = 6.7;
+<pre class="src src-java"><span style="color: #9a7500;">short</span> <span style="color: #cb9aad;">aShort</span> = 1;
+<span style="color: #9a7500;">int</span> <span style="color: #cb9aad;">anInt</span> = 2;
+<span style="color: #9a7500;">long</span> <span style="color: #cb9aad;">aLong</span> = 3;
+<span style="color: #9a7500;">float</span> <span style="color: #cb9aad;">aFloat</span> = 4.5f;
+<span style="color: #9a7500;">double</span> <span style="color: #cb9aad;">aDouble</span> = 6.7;
 </pre>
 </div>
 </div>
 
-<div id="outline-container-org5e45966" class="outline-4">
-<h4 id="org5e45966"><span class="section-number-4">2.2.1</span> aDouble = aFloat / anInt;</h4>
+<div id="outline-container-org208710a" class="outline-4">
+<h4 id="org208710a"><span class="section-number-4">2.2.1</span> aDouble = aFloat / anInt;</h4>
 <div class="outline-text-4" id="text-2-2-1">
 <p>
-1.75
+2.25
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgfb04914" class="outline-4">
-<h4 id="orgfb04914"><span class="section-number-4">2.2.2</span> aFloat = aShort / anInt;</h4>
+<div id="outline-container-org0a87129" class="outline-4">
+<h4 id="org0a87129"><span class="section-number-4">2.2.2</span> aFloat = aShort / anInt;</h4>
 <div class="outline-text-4" id="text-2-2-2">
 <p>
 0.0
@@ -482,8 +487,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org1cb13ed" class="outline-4">
-<h4 id="org1cb13ed"><span class="section-number-4">2.2.3</span> aDouble = anInt / aFloat + aLong;</h4>
+<div id="outline-container-org28b34ad" class="outline-4">
+<h4 id="org28b34ad"><span class="section-number-4">2.2.3</span> aDouble = anInt / aFloat + aLong;</h4>
 <div class="outline-text-4" id="text-2-2-3">
 <p>
 3.444444~
@@ -491,8 +496,8 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org3828be4" class="outline-4">
-<h4 id="org3828be4"><span class="section-number-4">2.2.4</span> aShort = anInt / aLong;</h4>
+<div id="outline-container-org30d5c19" class="outline-4">
+<h4 id="org30d5c19"><span class="section-number-4">2.2.4</span> aShort = anInt / aLong;</h4>
 <div class="outline-text-4" id="text-2-2-4">
 <p>
 0
@@ -502,18 +507,18 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgf847d2f" class="outline-2">
-<h2 id="orgf847d2f"><span class="section-number-2">3</span> Part 3: Introduction to Strings</h2>
+<div id="outline-container-orgc33a889" class="outline-2">
+<h2 id="orgc33a889"><span class="section-number-2">3</span> Part 3: Introduction to Strings</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-orgd28dc86" class="outline-3">
-<h3 id="orgd28dc86"><span class="section-number-3">3.1</span> Consider the following variable declarations</h3>
+<div id="outline-container-org99164ed" class="outline-3">
+<h3 id="org99164ed"><span class="section-number-3">3.1</span> Consider the following variable declarations</h3>
 <div class="outline-text-3" id="text-3-1">
 <div class="org-src-container">
-<pre class="src src-java"><span style="color: #bd93f9;">String</span> <span style="color: #f8f8f2; font-weight: bold;">firstName</span> = <span style="color: #f1fa8c;">"Johnny"</span>;
-<span style="color: #bd93f9;">String</span> <span style="color: #f8f8f2; font-weight: bold;">title</span> = <span style="color: #f1fa8c;">"Captain"</span>;
-<span style="color: #bd93f9;">String</span> <span style="color: #f8f8f2; font-weight: bold;">status</span> = <span style="color: #f1fa8c;">" is alive!"</span>;
-<span style="color: #bd93f9;">String</span> <span style="color: #f8f8f2; font-weight: bold;">proclamation</span>;
+<pre class="src src-java"><span style="color: #9a7500;">String</span> <span style="color: #cb9aad;">firstName</span> = <span style="color: #4f894c;">"Johnny"</span>;
+<span style="color: #9a7500;">String</span> <span style="color: #cb9aad;">title</span> = <span style="color: #4f894c;">"Captain"</span>;
+<span style="color: #9a7500;">String</span> <span style="color: #cb9aad;">status</span> = <span style="color: #4f894c;">" is alive!"</span>;
+<span style="color: #9a7500;">String</span> <span style="color: #cb9aad;">proclamation</span>;
 </pre>
 </div>
 
@@ -522,29 +527,29 @@ Write the Java code to construct each of the sentences below using the variables
 </p>
 </div>
 
-<div id="outline-container-org8679159" class="outline-4">
-<h4 id="org8679159"><span class="section-number-4">3.1.1</span> "Johnny 5 is alive!"</h4>
+<div id="outline-container-orgc78196d" class="outline-4">
+<h4 id="orgc78196d"><span class="section-number-4">3.1.1</span> "Johnny 5 is alive!"</h4>
 <div class="outline-text-4" id="text-3-1-1">
 <div class="org-src-container">
-<pre class="src src-java">proclamation = firstName + <span style="color: #f1fa8c;">" 5"</span> + status;
-System.out.println<span style="color: #f8f8f2;">(</span>proclamation<span style="color: #f8f8f2;">)</span>;
+<pre class="src src-java">proclamation = firstName + <span style="color: #4f894c;">" 5"</span> + status;
+System.out.println<span style="color: #3b6ea8;">(</span>proclamation<span style="color: #3b6ea8;">)</span>;
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-org5f226f2" class="outline-4">
-<h4 id="org5f226f2"><span class="section-number-4">3.1.2</span> "Captain Johnny is alive!"</h4>
+<div id="outline-container-org33435c2" class="outline-4">
+<h4 id="org33435c2"><span class="section-number-4">3.1.2</span> "Captain Johnny is alive!"</h4>
 <div class="outline-text-4" id="text-3-1-2">
 <div class="org-src-container">
-<pre class="src src-java">proclamation = title + <span style="color: #f1fa8c;">" "</span> + firstName + status;
-System.out.println<span style="color: #f8f8f2;">(</span>proclamation<span style="color: #f8f8f2;">)</span>;
+<pre class="src src-java">proclamation = title + <span style="color: #4f894c;">" "</span> + firstName + status;
+System.out.println<span style="color: #3b6ea8;">(</span>proclamation<span style="color: #3b6ea8;">)</span>;
 </pre>
 </div>
 </div>
 </div>
 </div>
-<div id="outline-container-org2d1da4f" class="outline-3">
-<h3 id="org2d1da4f"><span class="section-number-3">3.2</span> What is the length of each of the strings in parts (a) and (b) above? What Java command would report the length?</h3>
+<div id="outline-container-orge67244d" class="outline-3">
+<h3 id="orge67244d"><span class="section-number-3">3.2</span> What is the length of each of the strings in parts (a) and (b) above? What Java command would report the length?</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 <code>Johnny 5 is alive!</code> = 18
@@ -555,16 +560,16 @@ System.out.println<span style="color: #f8f8f2;">(</span>proclamation<span style=
 </p>
 
 <div class="org-src-container">
-<pre class="src src-java">x.length<span style="color: #f8f8f2;">()</span>;
+<pre class="src src-java">x.length<span style="color: #3b6ea8;">()</span>;
 </pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgfea82c1" class="outline-3">
-<h3 id="orgfea82c1"><span class="section-number-3">3.3</span> Given the variable declaration</h3>
+<div id="outline-container-org8d86b4f" class="outline-3">
+<h3 id="org8d86b4f"><span class="section-number-3">3.3</span> Given the variable declaration</h3>
 <div class="outline-text-3" id="text-3-3">
 <div class="org-src-container">
-<pre class="src src-java"><span style="color: #bd93f9;">String</span> <span style="color: #f8f8f2; font-weight: bold;">six</span> = <span style="color: #ff79c6; font-weight: bold;">new</span> <span style="color: #bd93f9;">String</span> <span style="color: #f8f8f2;">(</span>String.valueOf<span style="color: #8be9fd;">(</span>6<span style="color: #8be9fd;">)</span><span style="color: #f8f8f2;">)</span>;
+<pre class="src src-java"><span style="color: #9a7500;">String</span> <span style="color: #cb9aad;">six</span> = <span style="color: #3b6ea8;">new</span> <span style="color: #9a7500;">String</span> <span style="color: #3b6ea8;">(</span>String.valueOf<span style="color: #97365b;">(</span>6<span style="color: #97365b;">)</span><span style="color: #3b6ea8;">)</span>;
 </pre>
 </div>
 <p>
@@ -578,42 +583,42 @@ What is the value of <code>six.length()</code>?
 </div>
 </div>
 
-<div id="outline-container-org4313606" class="outline-2">
-<h2 id="org4313606"><span class="section-number-2">4</span> Part 4: Commenting</h2>
+<div id="outline-container-orgde65149" class="outline-2">
+<h2 id="orgde65149"><span class="section-number-2">4</span> Part 4: Commenting</h2>
 <div class="outline-text-2" id="text-4">
 <div class="org-src-container">
-<pre class="src src-java"><span style="color: #6272a4;">/**</span>
-<span style="color: #6272a4;">   &#160;*&#160;</span><span style="color: #8be9fd;">&lt;p&gt;</span><span style="color: #6272a4;">Course:&#160;&#160;&#160;420-G10&#160;Programming&#160;I</span><span style="color: #8be9fd;">&lt;/p&gt;</span>
-<span style="color: #6272a4;">   &#160;*&#160;</span><span style="color: #8be9fd;">&lt;p&gt;</span><span style="color: #6272a4;">Title:&#160;&#160;&#160;&#160;Doing Stuff</span><span style="color: #8be9fd;">&lt;/p&gt;</span>
-<span style="color: #6272a4;">   &#160;*&#160;</span><span style="color: #8be9fd;">&lt;p&gt;</span><span style="color: #6272a4;">Description:&#160;This&#160;program&#160;prints&#160;the&#160;quotient&#160;of&#160;two&#160;numbers&#160;and their </span>
-<span style="color: #6272a4;">   * remainder on&#160;the&#160;screen.</span><span style="color: #8be9fd;">&lt;/p&gt;</span>
-<span style="color: #6272a4;">   &#160;*&#160;@author&#160;</span>
-<span style="color: #6272a4;">   &#160;*/</span>
-<span style="color: #ff79c6; font-weight: bold;">public</span> <span style="color: #ff79c6; font-weight: bold;">class</span> <span style="color: #bd93f9;">SimpleDivider</span>
-<span style="color: #f8f8f2;">{</span>
-    <span style="color: #ff79c6; font-weight: bold;">public</span> <span style="color: #ff79c6; font-weight: bold;">static</span> <span style="color: #bd93f9;">void</span> <span style="color: #50fa7b; font-weight: bold;">main</span> <span style="color: #8be9fd;">(</span><span style="color: #bd93f9;">String</span> <span style="color: #f8f8f2; font-weight: bold;">args</span><span style="color: #bd93f9;">[]</span><span style="color: #8be9fd;">)</span>
-    <span style="color: #8be9fd;">{</span>
-        <span style="color: #6272a4;">// </span><span style="color: #6272a4;">#TODO: SOMETHING USEFUL</span>
-        <span style="color: #6272a4;">// </span><span style="color: #6272a4;">declaring variables</span>
-        <span style="color: #bd93f9;">int</span> <span style="color: #f8f8f2; font-weight: bold;">num1</span>, <span style="color: #f8f8f2; font-weight: bold;">num2</span>, <span style="color: #f8f8f2; font-weight: bold;">sum</span>, <span style="color: #f8f8f2; font-weight: bold;">quotient</span>, <span style="color: #f8f8f2; font-weight: bold;">remainder</span>; 
+<pre class="src src-java"><span style="color: #b6b6b6;">/**</span>
+<span style="color: #b6b6b6;">   &#160;*&#160;</span><span style="color: #97365b;">&lt;p&gt;</span><span style="color: #b6b6b6;">Course:&#160;&#160;&#160;420-G10&#160;Programming&#160;I</span><span style="color: #97365b;">&lt;/p&gt;</span>
+<span style="color: #b6b6b6;">   &#160;*&#160;</span><span style="color: #97365b;">&lt;p&gt;</span><span style="color: #b6b6b6;">Title:&#160;&#160;&#160;&#160;Doing Stuff</span><span style="color: #97365b;">&lt;/p&gt;</span>
+<span style="color: #b6b6b6;">   &#160;*&#160;</span><span style="color: #97365b;">&lt;p&gt;</span><span style="color: #b6b6b6;">Description:&#160;This&#160;program&#160;prints&#160;the&#160;quotient&#160;of&#160;two&#160;numbers&#160;and their </span>
+<span style="color: #b6b6b6;">   * remainder on&#160;the&#160;screen.</span><span style="color: #97365b;">&lt;/p&gt;</span>
+<span style="color: #b6b6b6;">   &#160;*&#160;@author: Darien</span>
+<span style="color: #b6b6b6;">   &#160;*/</span>
+<span style="color: #3b6ea8;">public</span> <span style="color: #3b6ea8;">class</span> <span style="color: #9a7500;">SimpleDivider</span>
+<span style="color: #3b6ea8;">{</span>
+    <span style="color: #3b6ea8;">public</span> <span style="color: #3b6ea8;">static</span> <span style="color: #9a7500;">void</span> <span style="color: #29838d;">main</span> <span style="color: #97365b;">(</span><span style="color: #9a7500;">String</span> <span style="color: #cb9aad;">args</span><span style="color: #4f894c;">[]</span><span style="color: #97365b;">)</span>
+    <span style="color: #97365b;">{</span>
+        <span style="color: #b1b1b1;">// </span><span style="color: #b1b1b1;">#TODO: SOMETHING USEFUL</span>
+        <span style="color: #b1b1b1;">// </span><span style="color: #b1b1b1;">declaring variables</span>
+        <span style="color: #9a7500;">int</span> <span style="color: #cb9aad;">num1</span>, <span style="color: #cb9aad;">num2</span>, <span style="color: #cb9aad;">sum</span>, <span style="color: #cb9aad;">quotient</span>, <span style="color: #cb9aad;">remainder</span>; 
 
-        <span style="color: #6272a4;">// </span><span style="color: #6272a4;">numbers used for arithmetic examples</span>
+        <span style="color: #b1b1b1;">// </span><span style="color: #b1b1b1;">numbers used for arithmetic examples</span>
         num1 = 1;                                       
         num2 = 3;
 
-        <span style="color: #6272a4;">// </span><span style="color: #6272a4;">perform arithmetic ?</span>
+        <span style="color: #b1b1b1;">// </span><span style="color: #b1b1b1;">perform arithmetic ?</span>
         quotient = num1/num2;           
         remainder = num1 % num2;                
 
-        <span style="color: #6272a4;">// </span><span style="color: #6272a4;">display the results</span>
-        System.out.println <span style="color: #bd93f9;">(</span><span style="color: #f1fa8c;">"The quotient of "</span>+ num1 + <span style="color: #f1fa8c;">" divided by "</span> 
-                            + num2 + <span style="color: #f1fa8c;">" is "</span> + quotient<span style="color: #bd93f9;">)</span>;                
+        <span style="color: #b1b1b1;">// </span><span style="color: #b1b1b1;">display the results</span>
+        System.out.println <span style="color: #4f894c;">(</span><span style="color: #4f894c;">"The quotient of "</span>+ num1 + <span style="color: #4f894c;">" divided by "</span> 
+                            + num2 + <span style="color: #4f894c;">" is "</span> + quotient<span style="color: #4f894c;">)</span>;                
 
-        System.out.println <span style="color: #bd93f9;">(</span><span style="color: #f1fa8c;">"The remainder of "</span>+ num1 + <span style="color: #f1fa8c;">" divided by "</span> 
-                            + num2 + <span style="color: #f1fa8c;">" is "</span> + remainder<span style="color: #bd93f9;">)</span>;       
+        System.out.println <span style="color: #4f894c;">(</span><span style="color: #4f894c;">"The remainder of "</span>+ num1 + <span style="color: #4f894c;">" divided by "</span> 
+                            + num2 + <span style="color: #4f894c;">" is "</span> + remainder<span style="color: #4f894c;">)</span>;       
 
-    <span style="color: #8be9fd;">}</span> 
-<span style="color: #f8f8f2;">}</span> 
+    <span style="color: #97365b;">}</span> <span style="color: #b1b1b1;">// </span><span style="color: #b1b1b1;">main()</span>
+<span style="color: #3b6ea8;">}</span> <span style="color: #b1b1b1;">// </span><span style="color: #b1b1b1;">SimpleDivider class</span>
 </pre>
 </div>
 
@@ -625,7 +630,7 @@ The remainder of 1 divided by 3 is 1
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Created: 2020-09-10 Thu 08:18</p>
+<p class="date">Created: 2020-09-11 Fri 09:05</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
