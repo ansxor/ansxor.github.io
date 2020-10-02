@@ -1,0 +1,212 @@
+:root {
+    --main-colour: #00080A;
+    --font-colour: #F5F5F5;
+    --highlight-colour: #2B9987;
+    --highlight2-colour: #325751;
+    --link-font-colour: #FAFAFA;
+}
+
+body {
+    color: var(--font-colour);
+    background-color: var(--main-colour);
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: 1em;
+}
+
+
+main h1 {
+    margin: 0.5em auto;
+    padding: 0.5em 1em;
+    background-color: var(--main-colour);
+    width: 80%;
+}
+
+main div {
+    background-color: var(--main-colour);
+    width: 80vw;
+    margin: 2em auto;
+    padding: 1em;
+    border: solid 1px white;
+}
+
+main p {
+    font-size: 1.1em;
+    margin: 0;
+    padding: 0.5em 0;
+}
+
+#wrapper {
+    position: relative;
+    min-height: 100%;
+    width: 100%;
+    background: url(../images/flowers.jpg) no-repeat fixed;
+    background-size: auto 200vh;
+}
+
+header {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 6em;
+    text-align: center;
+    color: var(--font-colour);
+    margin: auto 0;
+    padding: 0.3em 0.4em;
+}
+
+header a {
+    text-decoration: none;
+    color: var(--font-colour);
+}
+
+header a:hover {
+    color: var(--highlight-colour);
+}
+
+nav {
+    margin: 0;
+    padding: 0;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+nav ul a {
+    text-decoration: none;
+    padding: 0;
+}
+
+nav ul li {
+    font-family: Geneva, Tahoma, sans-serif;
+    background-color: var(--highlight-colour);
+    color: var(--font-colour);
+    text-decoration: none;
+    width: 95%;
+    margin: 0.4em auto;
+    padding: 1em 0;
+    font-size: 2em;
+    text-align: center;
+    list-style: none;
+    font-weight: thin;
+}
+
+nav ul li:hover {
+    background-color: var(--highlight2-colour);
+}
+
+#contentWrapper {
+    padding-bottom: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+footer {
+    background-color: var(--main-colour);
+    width: 100%;
+    min-height: 1em;
+    position: absolute;
+    bottom: 0;
+    text-align: left;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0 0;
+    margin: 0 0;
+}
+
+footer p {
+    padding-left: 2em;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    font-size: 0.9em;
+}
+
+footer p span {
+    font-style: italic;
+    font-size: 1.2em;
+    padding-left: 0.4em;
+}
+
+footer p a {
+    text-decoration: none;
+    color: var(--font-colour);
+    font-weight: bold;
+}
+
+footer ul a {
+    text-decoration: none;
+    padding: 0 0em;
+    text-align: left;
+    font-size: 1.4em;
+    color: var(--link-font-colour);
+    margin: 0 0;
+}
+
+footer ul a li {
+    padding: 0.4em 0.6em;
+}
+
+footer ul a li:hover {
+    background-color: var(--highlight-colour);
+}
+
+.notMobile {
+    display: none !important;
+}
+
+@media screen and (min-width: 768px) {
+    nav ul {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    nav ul a {
+        margin: 0 0.5em;
+    }
+
+    header {
+        font-size: 4em;
+    }
+
+    header a img {
+        height: 150px;
+        width: auto;
+        margin: 0;
+        padding: 0;
+    }
+
+    nav ul li {
+        display: inline;
+        padding: 0.25em 1em;
+        font-size: 1.4em;
+    }
+
+    main h1 {
+        margin: 1.4em auto;
+        font-size: 1.5em;
+        width: 75%;
+    }
+
+    .notMobile {
+        display: inline !important;
+    }
+
+    footer ul {
+        display: none;
+    }
+
+    main div {
+        font-size: 0.8em;
+        padding: 2em 4em;
+        text-align: left;
+    }
+
+    #wrapper {
+        min-height: 100vh;
+    }
+
+    #contentWrapper {
+        padding-bottom: 1em;
+    }
+}
