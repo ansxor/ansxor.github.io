@@ -14,17 +14,17 @@ function render(x) {
 
 chip8load()
 var timestep = 1000/60, lastFrameTimeMs = 0;
+var then = Date.now()
 
 function mainloop(timestamp) {
-	if (timestamp < lastFrameTimeMs + timestep) {
+	for (let i = 0; i < timestep; ++i)
 		chip8cycle()
-		setInterval(() => requestAnimationFrame(mainloop), 15)
-	} else {
-		lastFrameTimeMs = timestamp
-		render(chip8getvram())
-		chip8frame()
-		requestAnimationFrame(mainloop)
-	}
+	chip8frame()
+	render(chip8getvram())
+	requestAnimationFrame(mainloop)
 }
+
+document.addEventListener('keydown', e => chip8keydown(e.keyCode))
+document.addEventListener('keyup', e => chip8keyup(e.keyCode))
 
 requestAnimationFrame(mainloop)
